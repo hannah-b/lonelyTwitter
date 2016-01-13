@@ -8,26 +8,16 @@ import java.util.Date;
 public abstract class Tweet {
     protected Date date;
     protected String message;
-    protected Boolean isImportant;
 
     public abstract Boolean isImportant();
 
     public Tweet(Date date, String message) {
         this.date = date;
         this.message = message;
-        this.isImportant = Boolean.FALSE;
     }
 
     public Tweet(String message) {
         this.message = message;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public void setMessage(String message) throws TweetTooLongException {
@@ -37,7 +27,7 @@ public abstract class Tweet {
         this.message = message;
     }
 
-    public Tweet(Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
