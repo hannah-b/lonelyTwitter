@@ -23,6 +23,8 @@ public class NormalTweet extends Tweet implements Tweetable{
     }
 
     @Override
+    public String toString() {
+        return date.toString() + " | " + message; }
     public Boolean isImportant() {
         return Boolean.FALSE;
     }
