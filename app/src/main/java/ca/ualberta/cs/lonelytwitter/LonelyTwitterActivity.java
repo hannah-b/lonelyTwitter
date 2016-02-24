@@ -68,22 +68,6 @@ public class LonelyTwitterActivity extends Activity {
             }
         });
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                String text = bodyText.getText().toString();
-                NormalTweet latestTweet = new NormalTweet(text);
-
-                tweets.add(latestTweet);
-                adapter.notifyDataSetChanged();
-
-                // TODO: Replace with Elasticsearch
-                AsyncTask<NormalTweet, Void, Void> execute = new ElasticsearchTweetController.AddTweetTask();
-                execute.execute(latestTweet);
-
-                setResult(RESULT_OK);
-            }
-        });
     }
 
     @Override

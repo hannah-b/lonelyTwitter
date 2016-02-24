@@ -33,6 +33,7 @@ public class ElasticsearchTweetController {
             ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 
             // NOTE: I'm making a huge assumption here, that only the first search term will be used
+            search_strings = "{\"from\"; 0, \"size"
             Search search = new Search.Builder(search_strings[0])
                     .addIndex("testing")
                     .addType("tweet")
@@ -42,7 +43,7 @@ public class ElasticsearchTweetController {
                 SearchResult execute = client.execute(search);
                 if(execute.isSucceeded()){
                     // Return our list of tweets
-                    List<NormalTweet> returned_tweets = execute.getsSourceAsObjectList(NormalTweet.class);
+                    List<NormalTweet> returned_tweets = execute.getSourceAsObjectList(NormalTweet.class);
                     tweets.addAll(returned_tweets);
                 } else {
                     //TODO: Add an error message, because this was puzzling.
@@ -52,6 +53,7 @@ public class ElasticsearchTweetController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return tweets;
         }
     }
 
